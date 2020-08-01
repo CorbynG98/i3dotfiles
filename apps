@@ -1,0 +1,43 @@
+# This is essentially the order I installed things on this setup. This can differ aslong as everything is there when running the configs
+# The distro is Manjaro i3 (community manjaro release)
+
+polybar
+rofi
+pulseaudio
+pulseaudio-alsa
+compton
+neofetch
+
+cli-visualizer (aur)
+google-chrome (aur) -> replace this with firefox in all the configs if you want. Mainly the exec_always statement in i3 config
+spotify (aur) -> same as google chrome. Replace references in config with your music player. This will also require some changes on polybar to match your player.
+
+# Theme
+The theme was simply Qogir. Do a google search for it and follow its install instructions. Use sudo so you can set as the global theme and not the user theme other figure out the user one
+
+# Icons
+I have the font awesome icon pack install. Do this with 'pamac install ttf-font-awesome'. Without this the icons in polybar probably wont work unless you sorted that out another way.
+
+# i3 Layout scripts
+the i3 layouts wont work for you most likely, especially the vinta one as that is directory specific.
+modify the scripts that run the layouts in .local/bin to work with your setup as they wont by default :)
+
+# Desktop image
+Configure nitrogen to do background images. If you have 1 display using 'feh' will work fine
+
+# Display settings
+Make sure to remove display associations in the i3 config or modify them to your using. This section is directly under the i3 workspace command initializations
+
+# Some polybar stuff for viewing
+In polybar make sure to change the network module to use your network interface as it might not have the same name as mine :)
+
+If you want to change the date that is displayed in polybar, go to the weather.py scipt in the polybar folder and change city to your location. Also, change the system you are using. Mine is set to metric and reutrns a C appended to the temperature when run. Look at the script and figure out what I mean by this :)
+
+# Trackpad and touchscreen settings
+My configs do remove trackpad / touchscreen options as it was built on my desktop pc. A google search should sort out adding this in.
+
+# Nvidia drivers if you must
+As an additional one, I installed proprietary nvidia drivers for my graphics. This depends entirely on your setup but if you are using nvidia you can probably do 'sudo pacman -S nvidia' then enter whatever the latest repository extra and repository community are. In my case it was 46. You should check which drivers you need for your card though (I have a 1080, if you must know)	
+
+
+
