@@ -61,8 +61,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F4 exec spotify
+bindsym $mod+F3 exec code
+bindsym $mod+F4 exec pcmanfm
+bindsym $mod+F10 exec spotify
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -150,8 +151,8 @@ bindsym $mod+Ctrl+Left workspace prev
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
-set $ws4 4
-set $ws5 5
+set $ws4 "4: "
+set $ws5 "5: "
 set $ws6 6
 set $ws7 7
 set $ws8 8
@@ -192,6 +193,8 @@ bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
 assign [class="Spotify"] $ws0
 assign [class="Google-chrome"] $ws2
+assign [class="Code"] $ws3
+assign [class="discord"] $ws5
 
 for_window [class="Spotify"] move to workspace $ws0, workspace --no-auto-back-and-forth $ws0
 for_window [title="initial-terminal"] floating enable
@@ -199,8 +202,10 @@ for_window [title="initial-terminal"] floating enable
 
 workspace $ws1 output HDMI-1
 workspace $ws2 output HDMI-1
+workspace $ws3 output HDMI-1
 workspace $ws0 output DP-3
-workspace $ws3 output DP-3
+workspace $ws4 output DP-3
+workspace $ws5 output DP-3
 
 
 # Open applications on specific workspaces
@@ -308,7 +313,7 @@ exec --no-startup-id pamac-tray
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker blurlock -corners +00-
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
 
@@ -439,7 +444,6 @@ mode "$mode_gaps_outer" {
 }
 
 bindsym $mod+shift+x exec i3lock-fancy
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen
 
 exec_awlays pulseaudio --start
 
@@ -457,6 +461,8 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always xrandr --output DVI-D-1 --off --output DP-1 --off --output DP-2 --off --output HDMI-1 --primary --mode 1920x1080 --pos 1080x0 --rotate normal --output DP-3 --mode 1920x1080 --pos 0x0 --rotate right
 
 exec_always --no-startup-id compton --backend glx --vsync opengl-swc --config ~/.config/compton.conf
+
+bindsym $mod+d exec rofi -show run lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen -opacity "85"
 
 # exec_always feh --bg-scale ~/Pictures/purple_river_reflection-wallpaper-1920x1080.jpg
 
